@@ -1,9 +1,8 @@
 import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
+import 'rxjs/add/operator/toPromise'; // For to be able to convert http.get to promise
 
-// To be able to convert http.get to promise
-import 'rxjs/add/operator/toPromise';
-
+// Types
 import { Product } from './product';
 
 /**
