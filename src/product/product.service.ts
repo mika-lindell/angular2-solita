@@ -1,6 +1,9 @@
 import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
 
+// To be able to convert http.get to promise
+import 'rxjs/add/operator/toPromise';
+
 import { Product } from './product';
 
 /**
@@ -21,7 +24,7 @@ export class ProductService {
   getProducts(): Promise<Product[]> {
     return this.http.get(this.api)
                .toPromise()
-               .then(response => response.json().data as Product[])
+               .then(response => response.json().products as Product[])
                .catch(this.handleError);
   }
 
@@ -34,7 +37,7 @@ export class ProductService {
     const url = `${this.api}/${id}`;
     return this.http.get(url)
       .toPromise()
-      .then(response => response.json().data as Product)
+      .then(response => response.json().products as Product)
       .catch(this.handleError);
   }
 
