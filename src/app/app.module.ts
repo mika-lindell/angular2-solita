@@ -9,6 +9,7 @@ import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component'
 
 // Services
 import { ProductService } from '../product/product.service';
+import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
 
 // Modules and components made available for the app
 @NgModule({
@@ -24,7 +25,8 @@ import { ProductService } from '../product/product.service';
   ],
 
   providers: [
-    ProductService
+    ProductService,
+    ShoppingCartService
   ],
 
   bootstrap: [ AppComponent ] // Use this component to start the app

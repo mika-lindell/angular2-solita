@@ -6,19 +6,19 @@ import { Subject }    from 'rxjs/Subject';
 export class ShoppingCartService {
   
   // Observable string sources
-  private itemAddedSource = new Subject<string>();
-  private itemDeletedSource = new Subject<string>();
+  private itemAddedSource = new Subject<number>();
+  private itemDeletedSource = new Subject<number>();
 
   // Observable string streams
-  itemAdded$ = this.missionAnnouncedSource.asObservable();
-  itemDeleted$ = this.missionConfirmedSource.asObservable();
+  itemAdded$ = this.itemAddedSource.asObservable();
+  itemDeleted$ = this.itemDeletedSource.asObservable();
 
   // Service message commands
   addItem(id: number) {
-    this.missionAnnouncedSource.next(id);
+    this.itemAddedSource.next(id);
   }
 
   deleteItem(id: number) {
-    this.missionConfirmedSource.next(id);
+    this.itemDeletedSource.next(id);
   }
 }
