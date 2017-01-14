@@ -10,8 +10,7 @@ import { Product } from '../product/product';
 /**
 @class Gets product-data for components
 **/
-@Injectable()
-export class ProductsService {
+@Injectable() export class ProductsService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
   private api = '../../public/json/products.json';  // URL to web api

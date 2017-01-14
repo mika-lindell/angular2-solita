@@ -11,8 +11,7 @@ import { Product } from '../product/product';
 /**
 @class Create a subscription for events related to managing shopping cart — to enable cross-component communication
 **/
-@Injectable()
-export class ShoppingCartService {
+@Injectable() export class ShoppingCartService {
   
   // Create sources for subscriptions...
   private itemAddedSource = new Subject<Product>();
@@ -29,7 +28,7 @@ export class ShoppingCartService {
   addItem(product: Product) {
     this.itemAddedSource.next(product);
   }
-  
+
   /**
   @function Triggers callbacks subscribed to itemDeleted$ -stream
   @param    {Product} The product to be passed to the callback

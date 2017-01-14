@@ -1,4 +1,4 @@
-import { Component, OnDestroy } from '@angular/core';
+import { Component, Input, OnDestroy } from '@angular/core';
 import { Subscription }   from 'rxjs/Subscription';
 
 // Services
@@ -20,7 +20,7 @@ import '../../public/css/styles.css'; // Import styles common for all components
 
 export class AppComponent implements OnDestroy { 
 
-  shoppingCart: ShoppingCartItem[] = []; // This property keeps track of products in shopping cart 
+  @Input() shoppingCart: ShoppingCartItem[] = []; // This property keeps track of products in shopping cart 
   subscription: Subscription;  // To hold the service subscription
 
   constructor(

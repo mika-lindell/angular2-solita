@@ -18,8 +18,7 @@ import { Product } from '../product/product';
 **/
 export class ProductDetailComponent{
 
-  @Input()           // Use input to make this property accessible from template
-  product: Product; // This should be passed on by parent component via a template
+  @Input() product: Product; // This should be passed on by parent component via a template
 
   constructor(
     private shoppingCartService: ShoppingCartService // As this components' parent (AppComponent) has the same service running, we get its instance instead of creating new service
