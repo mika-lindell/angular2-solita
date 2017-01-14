@@ -5,10 +5,11 @@ import { HttpModule }     from '@angular/http';
 // Components
 import { AppComponent }   from './app.component';
 import { ProductsComponent } from '../products/products.component';
+import { ProductDetailComponent } from '../product/product-detail.component';
 import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
 
 // Services
-import { ProductService } from '../product/product.service';
+import { ProductsService } from '../products/products.service';
 import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
 
 // Modules and components made available for the app
@@ -21,11 +22,12 @@ import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
   declarations: [
     AppComponent,
     ProductsComponent,
+    ProductDetailComponent,
     ShoppingCartComponent
   ],
 
   providers: [
-    ProductService,
+    ProductsService,
     ShoppingCartService
   ],
 

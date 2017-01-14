@@ -1,15 +1,17 @@
+// Service for fetching data about available products
+
 import { Injectable }    from '@angular/core';
 import { Headers, Http } from '@angular/http';
 import 'rxjs/add/operator/toPromise'; // For to be able to convert http.get to promise
 
 // Types
-import { Product } from './product';
+import { Product } from '../product/product';
 
 /**
 @class Gets product-data for components
 **/
 @Injectable()
-export class ProductService {
+export class ProductsService {
 
   private headers = new Headers({'Content-Type': 'application/json'});
   private api = '../../public/json/products.json';  // URL to web api
