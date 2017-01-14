@@ -15,7 +15,7 @@
         <h3>{{item.product.name}}</h3>
         <span>{{item.product.price}} &euro;</span>
         <button
-          (click)="removeFromCart()">
+          (click)="removeProductFromCart(item.product)">
           X
         </button>
         <input type="number" [(ngModel)]="item.count" />

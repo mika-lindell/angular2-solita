@@ -15,11 +15,11 @@ import { Product } from '../product/product';
   
   // Create sources for subscriptions...
   private itemAddedSource = new Subject<Product>();
-  private itemDeletedSource = new Subject<Product>();
+  private itemRemovedSource = new Subject<Product>();
 
   // ... and make them observable streams one can subscribe to
   itemAdded$ = this.itemAddedSource.asObservable();
-  itemDeleted$ = this.itemDeletedSource.asObservable();
+  itemRemoved$ = this.itemRemovedSource.asObservable();
 
   /**
   @function Triggers callbacks subscribed to itemAdded$ -stream
@@ -33,7 +33,7 @@ import { Product } from '../product/product';
   @function Triggers callbacks subscribed to itemDeleted$ -stream
   @param    {Product} The product to be passed to the callback
   **/
-  deleteItem(product: Product) {
-    this.itemDeletedSource.next(product);
+  removeItem(product: Product) {
+    this.itemRemovedSource.next(product);
   }
 }
