@@ -6,6 +6,7 @@ import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
 
 // Types
 import { Product } from '../product/product';
+import { ShoppingCartItem } from '../shopping-cart/shopping-cart-item';
 
 // Styles
 import '../../public/css/styles.css'; // Import styles common for all components
@@ -19,7 +20,7 @@ import '../../public/css/styles.css'; // Import styles common for all components
 
 export class AppComponent implements OnDestroy { 
 
-  shoppingCart: Product[] = []; // This property keeps track of products in shopping cart 
+  shoppingCart: ShoppingCartItem[] = []; // This property keeps track of products in shopping cart 
   subscription: Subscription;  // To hold the service subscription
 
   constructor(
@@ -28,9 +29,31 @@ export class AppComponent implements OnDestroy {
 
     // Subscribe to service handling adding items to shopping cart – to detect when the cart needs to be updated
     this.subscription = shoppingCartService.itemAdded$.subscribe(
-      product => {
-        this.shoppingCart.push(product); // Add the item we received via service
+      newProduct => {
+
+        let alreadyInCart: boolean = false;
+
+        // First loop thru all items currently in shopping cart...
+        for(let item of this.shoppingCart){
+          // ...to see if the product we received via service is already in cart
+          if(item.product.id === newProduct.id){
+            item.count++; // If it is, just add one to the count of products
+            alreadyInCart = true; // Set the flag so we know not to add it again
+            break;
+          }
+
+        }
+
+        // If the product we received via service isn't in cart...
+        if(!alreadyInCart){
+          // ...add the product as a new item
+          let newItem: ShoppingCartItem = new ShoppingCartItem;
+          newItem.product = newProduct;
+          this.shoppingCart.push(newItem); 
+        }
+
         console.log(this.shoppingCart);
+
     });
   }
 

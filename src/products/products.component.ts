@@ -20,7 +20,7 @@ import { Product } from '../product/product';
 export class ProductsComponent implements OnInit {
 
   // Create empty array of products to store the data in
-  products: Product[];
+  products: Product[] = [];
 
   constructor(
     private productsService: ProductsService, // Create new instance of this service to fetch product data
