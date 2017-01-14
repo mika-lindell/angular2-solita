@@ -56,7 +56,8 @@
     (click)="toggleCartDetails()">
     Close
   </button>
-  <button>
+  <!-- Disable if no items in cart -->
+  <button [disabled]="cartProductTotal <= 0">
     Checkout
   </button>
 </div>
