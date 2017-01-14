@@ -1,24 +1,39 @@
-  <button (click)="toggleCartDetails()">
-    <span *ngIf="shoppingCart.length === 0">
-      No items in cart
-    </span>
-    <span *ngIf="shoppingCart.length > 0">
-       items in cart
-    </span>
+<button 
+  (click)="toggleCartDetails()">
+  <span 
+    *ngIf="shoppingCart.length === 0">
+    No items in cart
+  </span>
+  <span 
+    *ngIf="shoppingCart.length > 0">
+     items in cart
+  </span>
+</button>
+<div 
+  [hidden]="!cartDetails">
+  <span 
+    *ngIf="shoppingCart.length === 0">
+    No items in cart
+  </span>
+  <ul 
+    *ngIf="shoppingCart.length > 0">
+    <li 
+      *ngFor="let item of shoppingCart">
+      <h3>{{item.product.name}}</h3>
+      <span>{{item.product.price}} &euro;</span>
+      <button
+        (click)="removeProductFromCart(item.product)">
+        X
+      </button>
+      <input type="number" 
+        [(ngModel)]="item.count" />
+    </li>
+  </ul>
+  <button 
+    (click)="toggleCartDetails()">
+    Close
   </button>
-  <div [hidden]="!cartDetails">
-    <span *ngIf="shoppingCart.length === 0">
-      No items in cart
-    </span>
-    <ul *ngIf="shoppingCart.length > 0">
-      <li *ngFor="let item of shoppingCart">
-        <h3>{{item.product.name}}</h3>
-        <span>{{item.product.price}} &euro;</span>
-        <button
-          (click)="removeProductFromCart(item.product)">
-          X
-        </button>
-        <input type="number" [(ngModel)]="item.count" />
-      </li>
-    </ul>
-  </div>
+  <button>
+    Checkout
+  </button>
+</div>
