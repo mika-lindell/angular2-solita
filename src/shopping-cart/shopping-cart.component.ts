@@ -19,9 +19,9 @@ import { ShoppingCartItem } from '../shopping-cart/shopping-cart-item';
 export class ShoppingCartComponent { 
 
   @Input() shoppingCart: ShoppingCartItem[]; // This should be passed on to this component by parent component via a template
-  cartProductTotal: number = 0; // The total amount of items in the cart — updated via updateCartStatus
-  cartPriceTotal: number = 0.00;
-  cartDetails: boolean = false;
+  cartProductTotal: number = 0; // The total amount of products in the cart — updated via updateCartStatus
+  cartPriceTotal: number = 0;   // The total price of products in the cart — updated via updateCartStatus
+  cartDetails: boolean = false; 
 
   subscriptionAddItem: Subscription;  // To hold service subscription to be notified when item is added to shopping cart
 
@@ -32,7 +32,7 @@ export class ShoppingCartComponent {
     // Subscribe to service handling adding items to shopping cart – to open the cart details when item is added
     this.subscriptionAddItem = shoppingCartService.itemAdded$.subscribe(
       newProduct => {
-        this.cartDetails = true; // Open the detailed shopping cart for user
+        this.cartDetails = true; // Open detailed shopping cart -dropdown when something is added
         this.updateCartStatus();
     });
 
@@ -45,23 +45,27 @@ export class ShoppingCartComponent {
     this.cartDetails = !this.cartDetails; // This variable is used in templates to set the display of desired elemets
   }
 
+  /**
+  @method Updates total count of products & price of products in shopping cart
+  **/
   updateCartStatus(){
     // Count total amount of items in cart
     let totalCount: number = 0;
     let totalPrice: number = 0.00;
 
+    // Loop thru all items in shopping cart...
     for(let item of this.shoppingCart){
 
       if(isNaN(item.count) || item.count < 1){
-        item.count = 1;
+        item.count = 1; // If count of products is something funny, reset it
       }
 
-      totalCount = totalCount + item.count;
-      totalPrice = totalPrice + (item.product.price * item.count)
-
+      totalCount = totalCount + item.count; // Add the amount of products in this item to totals
+      totalPrice = totalPrice + (item.product.price * item.count) // Add the total price of this item to totals
 
     }
 
+    // Update  properties with new values
     this.cartProductTotal = totalCount;
     this.cartPriceTotal = totalPrice;
 

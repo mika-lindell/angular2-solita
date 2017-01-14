@@ -1,9 +1,12 @@
+<!-- Shopping cart button in the main menu -->
 <button 
   (click)="toggleCartDetails()">
+  <!-- Display if no items in cart -->
   <span 
     *ngIf="cartProductTotal <= 0">
     No items in cart
   </span>
+  <!-- Special messages depending on item count -->
   <span 
     *ngIf="cartProductTotal === 1">
      {{cartProductTotal}} item in cart
@@ -13,34 +16,42 @@
      {{cartProductTotal}} items in cart
   </span>
 </button>
+<!-- 'Shopping cart details' -dropdown -->
 <div 
   [hidden]="!cartDetails">
+  <!-- For empty cart -->
   <span 
     *ngIf="cartProductTotal <= 0">
     Your shopping cart is empty.
   </span>
+  <!-- When cart has products -->
   <div
     *ngIf="cartProductTotal > 0">
     <ul> 
+      <!-- Loop thru all products in cart -->
       <li 
         *ngFor="let item of shoppingCart">
+        <!-- Product details -->
         <h3>{{item.product.name}}</h3>
         <span>{{item.product.price}} &euro;</span>
         <button
           (click)="removeProductFromCart(item.product)">
           X
         </button>
+        <!-- How many products? -->
         <input type="number" min="1" max="100" step="1"
           [(ngModel)]="item.count"
           (ngModelChange)="updateCartStatus()" />
       </li>
     </ul>
+    <!-- Total price -->
     <p>
       <small>Shipping 0 &euro;</small>
       <br/>
       Total {{cartPriceTotal}} &euro;
     </p>
   </div>
+  <!-- Close & Checkout -->
   <button 
     (click)="toggleCartDetails()">
     Close
