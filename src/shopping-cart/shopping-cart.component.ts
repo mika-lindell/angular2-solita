@@ -35,11 +35,16 @@ export class ShoppingCartComponent {
 
   }
 
-
+  /**
+  @method Toggles display of the shopping cart details-dropdown
+  **/
   toggleCartDetails(){
-    this.cartDetails = !this.cartDetails;
+    this.cartDetails = !this.cartDetails; // This variable is used in templates to set the display of desired elemets
   }
 
+  /**
+  @method Notifies the subscribers of shoppingCartService that a product should be removed from shopping cart
+  **/
   removeProductFromCart(product: Product){
     this.shoppingCartService.removeItem(product);
   }

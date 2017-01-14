@@ -24,6 +24,9 @@ export class ProductDetailComponent{
     private shoppingCartService: ShoppingCartService // As this components' parent (AppComponent) has the same service running, we get its instance instead of creating new service
     ) { }
 
+  /**
+  @method Notifies the subscribers of shoppingCartService that a product should be added to shopping cart
+  **/
   addToCart(): void {
     this.shoppingCartService.addItem(this.product)
   }

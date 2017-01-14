@@ -22,7 +22,7 @@ import { Product } from '../product/product';
   itemRemoved$ = this.itemRemovedSource.asObservable();
 
   /**
-  @function Triggers callbacks subscribed to itemAdded$ -stream
+  @method Triggers callbacks subscribed to itemAdded$ -stream
   @param    {Product} The product to be passed to the callback
   **/
   addItem(product: Product) {
@@ -30,7 +30,7 @@ import { Product } from '../product/product';
   }
 
   /**
-  @function Triggers callbacks subscribed to itemDeleted$ -stream
+  @method Triggers callbacks subscribed to itemDeleted$ -stream
   @param    {Product} The product to be passed to the callback
   **/
   removeItem(product: Product) {

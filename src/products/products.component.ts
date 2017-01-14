@@ -28,7 +28,7 @@ export class ProductsComponent implements OnInit {
 
 
   /**
-  @function Gets all products using productService and then stores data in variable 
+  @method Gets all products using productService and then stores data in variable 
   **/
   getProducts(): void {
     this.productsService.getProducts().then(

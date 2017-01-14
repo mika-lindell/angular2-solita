@@ -18,11 +18,15 @@ import '../../public/css/styles.css'; // Import styles common for all components
   styleUrls: ['./app.component.css']
 })
 
+
+/**
+@class Parent of all components. Works as a mediator between components and stores shared data.
+**/
 export class AppComponent implements OnDestroy { 
 
   @Input() shoppingCart: ShoppingCartItem[] = []; // This property keeps track of products in shopping cart 
-  subscriptionAddItem: Subscription;  // To hold service subscription for adding item to shopping cart
-  subscriptionRemoveItem: Subscription;  // To hold service subscription for removing item from shopping cart
+  subscriptionAddItem: Subscription;  // To hold service subscription to be notified when item is added to shopping cart
+  subscriptionRemoveItem: Subscription;  // To hold service subscription to be notified when item is removed from shopping cart
 
   constructor(
     private shoppingCartService: ShoppingCartService // Create service instance on component creation
@@ -31,18 +35,22 @@ export class AppComponent implements OnDestroy {
     // Subscribe to service handling adding items to shopping cart – to detect when the cart needs to be updated
     this.subscriptionAddItem = shoppingCartService.itemAdded$.subscribe(
       newProduct => {
-        this.addItemToCart(newProduct) // Add the product we received via service to cart
+        this.addProductToCart(newProduct) // Add the product we received via service to cart
     });
 
     // Subscribe to service handling removing items from shopping cart – to detect when the cart needs to be updated
     this.subscriptionRemoveItem = shoppingCartService.itemRemoved$.subscribe(
       remProduct => {
-        this.removeItemFromCart(remProduct) // remove the product we received via service from cart
+        this.removeProductFromCart(remProduct) // remove the product we received via service from cart
     });
 
   }
 
-  addItemToCart(newProduct: Product){
+  /**
+  @method Converts product into a shopping cart item and adds it. If it already exists, it increases the count of said product by 1 
+  @param {Product} The product to be added
+  **/
+  addProductToCart(newProduct: Product){
 
     let alreadyInCart: boolean = false;
 
@@ -67,13 +75,17 @@ export class AppComponent implements OnDestroy {
     console.log(this.shoppingCart);
   }
 
-  removeItemFromCart(remProduct: Product){
+  /**
+  @method Removes product from shopping cart 
+  @param {Product} The product to be removed
+  **/
+  removeProductFromCart(remProduct: Product){
     // First loop thru all items currently in shopping cart...
     for(let i in this.shoppingCart){
       // ...to see if the product we received is in cart...
       if(this.shoppingCart[i].product.id === remProduct.id){
         // ...and if found, remove item from cart
-        this.shoppingCart.splice(+i, 1); // adding plus before i will convert it to number for splice to accept it (for casts it as a string)
+        this.shoppingCart.splice(+i, 1); // adding plus before i will convert it to number for splice to accept it ('for' casts it as a string)
         break;
       }
     }
@@ -85,6 +97,7 @@ export class AppComponent implements OnDestroy {
   ngOnDestroy() {
     // prevent memory leak when component destroyed
     this.subscriptionAddItem.unsubscribe();
+    this.subscriptionRemoveItem.unsubscribe();
   }
 
 }
