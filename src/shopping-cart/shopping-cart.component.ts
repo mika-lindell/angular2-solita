@@ -59,9 +59,7 @@ export class ShoppingCartComponent {
       totalCount = totalCount + item.count;
       totalPrice = totalPrice + (item.product.price * item.count)
 
-      if(item.count === 0){
-        this.removeProductFromCart(item.product);
-      }
+
     }
 
     this.cartProductTotal = totalCount;

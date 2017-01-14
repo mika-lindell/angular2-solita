@@ -1,46 +1,46 @@
 <button 
   (click)="toggleCartDetails()">
   <span 
-    *ngIf="shoppingCart.length === 0">
+    *ngIf="cartProductTotal <= 0">
     No items in cart
   </span>
   <span 
-    *ngIf="shoppingCart.length === 1">
+    *ngIf="cartProductTotal === 1">
      {{cartProductTotal}} item in cart
   </span>
   <span 
-    *ngIf="shoppingCart.length > 1">
+    *ngIf="cartProductTotal > 1">
      {{cartProductTotal}} items in cart
   </span>
 </button>
 <div 
   [hidden]="!cartDetails">
   <span 
-    *ngIf="shoppingCart.length === 0">
-    No items in cart
+    *ngIf="cartProductTotal <= 0">
+    Your shopping cart is empty.
   </span>
-  <ul 
-    *ngIf="shoppingCart.length > 0">
-    <li 
-      *ngFor="let item of shoppingCart">
-      <h3>{{item.product.name}}</h3>
-      <span>{{item.product.price}} &euro;</span>
-      <button
-        (click)="removeProductFromCart(item.product)">
-        X
-      </button>
-      <input type="number" min="1" max="100" step="1"
-        [(ngModel)]="item.count"
-        (ngModelChange)="updateCartStatus()" />
-    </li>
-  </ul>
-  <p>
-  <small>Shipping 0 &euro;</small>
-  <br/>
-  Total {{cartPriceTotal}} &euro;
-  <br/>
-  <small>Your order will ship in xxx</small>
-  </p>
+  <div
+    *ngIf="cartProductTotal > 0">
+    <ul> 
+      <li 
+        *ngFor="let item of shoppingCart">
+        <h3>{{item.product.name}}</h3>
+        <span>{{item.product.price}} &euro;</span>
+        <button
+          (click)="removeProductFromCart(item.product)">
+          X
+        </button>
+        <input type="number" min="1" max="100" step="1"
+          [(ngModel)]="item.count"
+          (ngModelChange)="updateCartStatus()" />
+      </li>
+    </ul>
+    <p>
+      <small>Shipping 0 &euro;</small>
+      <br/>
+      Total {{cartPriceTotal}} &euro;
+    </p>
+  </div>
   <button 
     (click)="toggleCartDetails()">
     Close
