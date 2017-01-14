@@ -19,6 +19,8 @@ import { ShoppingCartItem } from '../shopping-cart/shopping-cart-item';
 export class ShoppingCartComponent { 
 
   @Input() shoppingCart: ShoppingCartItem[]; // This should be passed on to this component by parent component via a template
+  cartProductTotal: number = 0; // The total amount of items in the cart — updated via updateCartStatus
+  cartPriceTotal: number = 0.00;
   cartDetails: boolean = false;
 
   subscriptionAddItem: Subscription;  // To hold service subscription to be notified when item is added to shopping cart
@@ -31,6 +33,7 @@ export class ShoppingCartComponent {
     this.subscriptionAddItem = shoppingCartService.itemAdded$.subscribe(
       newProduct => {
         this.cartDetails = true; // Open the detailed shopping cart for user
+        this.updateCartStatus();
     });
 
   }
@@ -42,11 +45,42 @@ export class ShoppingCartComponent {
     this.cartDetails = !this.cartDetails; // This variable is used in templates to set the display of desired elemets
   }
 
+  updateCartStatus(){
+    // Count total amount of items in cart
+    let totalCount: number = 0;
+    let totalPrice: number = 0.00;
+
+    for(let item of this.shoppingCart){
+
+      if(isNaN(item.count) || item.count < 1){
+        item.count = 1;
+      }
+
+      totalCount = totalCount + item.count;
+      totalPrice = totalPrice + (item.product.price * item.count)
+
+      if(item.count === 0){
+        this.removeProductFromCart(item.product);
+      }
+    }
+
+    this.cartProductTotal = totalCount;
+    this.cartPriceTotal = totalPrice;
+
+  }
+
   /**
   @method Notifies the subscribers of shoppingCartService that a product should be removed from shopping cart
   **/
   removeProductFromCart(product: Product){
     this.shoppingCartService.removeItem(product);
+    this.updateCartStatus();
+  }
+
+  // Event fired when this component is closed
+  ngOnDestroy() {
+    // prevent memory leak when component destroyed
+    this.subscriptionAddItem.unsubscribe();
   }
 
 }

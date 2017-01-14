@@ -5,8 +5,12 @@
     No items in cart
   </span>
   <span 
-    *ngIf="shoppingCart.length > 0">
-     items in cart
+    *ngIf="shoppingCart.length === 1">
+     {{cartProductTotal}} item in cart
+  </span>
+  <span 
+    *ngIf="shoppingCart.length > 1">
+     {{cartProductTotal}} items in cart
   </span>
 </button>
 <div 
@@ -25,10 +29,18 @@
         (click)="removeProductFromCart(item.product)">
         X
       </button>
-      <input type="number" 
-        [(ngModel)]="item.count" />
+      <input type="number" min="1" max="100" step="1"
+        [(ngModel)]="item.count"
+        (ngModelChange)="updateCartStatus()" />
     </li>
   </ul>
+  <p>
+  <small>Shipping 0 &euro;</small>
+  <br/>
+  Total {{cartPriceTotal}} &euro;
+  <br/>
+  <small>Your order will ship in xxx</small>
+  </p>
   <button 
     (click)="toggleCartDetails()">
     Close
