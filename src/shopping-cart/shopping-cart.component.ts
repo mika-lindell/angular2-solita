@@ -65,7 +65,7 @@ export class ShoppingCartComponent {
 
     }
 
-    // Update  properties with new values
+    // Update component properties with new values
     this.cartProductTotal = totalCount;
     this.cartPriceTotal = totalPrice;
 

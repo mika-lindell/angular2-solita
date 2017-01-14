@@ -1,8 +1,11 @@
+<!-- Show & process only if products present -->
 <article *ngIf="product">
+  <!-- product details -->
   <h2>{{product.id}} | {{product.name}}</h2>
   <p>
   {{product.description}}
   </p>
+  <!-- Price & add to cart -button -->
   <section>
     <div>{{product.price}} &euro;</div>
     <button
