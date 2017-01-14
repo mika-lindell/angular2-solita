@@ -1,11 +1,16 @@
+// Component for displaying a list of products
+
 import { Component, OnInit } from '@angular/core';
 
+// Services
+import { ProductsService } from '../products/products.service';
+
+// Types
 import { Product } from '../product/product';
-import { ProductService } from '../product/product.service';
 
 @Component({
   selector: 'products',
-  providers: [ProductService],
+  providers: [ProductsService],  // This component should be the provider of this service
   templateUrl: 'products.component.html'
 })
 
@@ -15,27 +20,27 @@ import { ProductService } from '../product/product.service';
 export class ProductsComponent implements OnInit {
 
   // Create empty array of products to store the data in
-  products: Product[];
+  products: Product[] = [];
 
   constructor(
-    private productService: ProductService // Defines the productService – as its type is injectable new instance will be craeated
+    private productsService: ProductsService, // Create new instance of this service to fetch product data
     ) { }
 
+
   /**
-  @function Gets all products using productService and then stores data in variable 
+  @method Gets all products using productService and then stores data in variable 
   **/
   getProducts(): void {
-    this.productService.getProducts().then(
+    this.productsService.getProducts().then(
       products => this.products = products
      );
   }
 
-  /**
-  @function All the heavy lifting at component init 
-  **/
+  // Event fired when the component is ready
+  // Do all the heavy lifting here instead of constructor
   ngOnInit(): void {
-    // Better to use constructor just for declarations and such
     this.getProducts();
   }
+
 
 }
