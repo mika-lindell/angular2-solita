@@ -6,7 +6,7 @@
 /********/
 
 *{
-  box-sizing: border-box;
+  box-sizing: border-box; /* To make padding & borders count in total size of an element */
 }
 
 /* Set base font family */
@@ -42,7 +42,7 @@ button[disabled]{
 /**********/
 
 main{
-  margin: 0 1rem;
+  margin: 0 1.5rem;
 }
 
 .container{
