@@ -13,7 +13,8 @@ import { ShoppingCartItem } from '../shopping-cart/shopping-cart-item';
 
 @Component({
   selector: 'shopping-cart',
-  templateUrl: './shopping-cart.component.html'
+  templateUrl: './shopping-cart.component.html',
+  styleUrls: [String('./shopping-cart.component.css')] // For some reason typescript decided this isnt a string (tho it worked before), so hacked it with String()
 })
 
 export class ShoppingCartComponent { 

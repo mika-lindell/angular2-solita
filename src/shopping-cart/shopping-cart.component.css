@@ -1,0 +1,58 @@
+/* SPECIAL STYLES FOR SHOPPING CART COMPONENT – Extends base styles from styles.css */
+/* Using SMACCS -principle -> https://smacss.com */
+
+
+/********/
+/* BASE */
+/********/
+
+/**********/
+/* LAYOUT */
+/**********/
+
+shopping-cart{
+  position: absolute;
+  right: 1rem;
+  top: 1.8rem;
+}
+
+/***********/
+/* MODULES */
+/***********/
+
+.dropdown{
+  position: absolute;
+  padding: 2rem;
+  min-height: 10rem;
+}
+
+/* To create the arrow on top of the dropdown */
+.dropdown::before{
+  content: '';
+  display: block;
+  position: absolute;
+  top: -0.7rem;
+  left: 50%;
+  margin-left: -0.75rem;
+  height: 0.7rem;
+  width: 1.5rem;
+  background-image: url(http://localhost:8080/assets/triangle-up-white.f5cf2ef4611ed5c9f60d9a4f95b6e974.svg);
+  background-repeat: no-repeat;
+  background-position: center bottom;
+}
+
+.dropdown-right{
+  right: 0;
+}
+
+/*********/
+/* STATE */
+/*********/
+
+/*********/
+/* THEME */
+/*********/
+
+/****************/
+/* STATE CHANGE */
+/****************/

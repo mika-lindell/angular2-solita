@@ -23,7 +23,7 @@ import { Product } from '../product/product';
 
   /**
   @method Triggers callbacks subscribed to itemAdded$ -stream
-  @param    {Product} The product to be passed to the callback
+  @param  {Product} The product to be passed to the callback
   **/
   addItem(product: Product) {
     this.itemAddedSource.next(product);
@@ -31,7 +31,7 @@ import { Product } from '../product/product';
 
   /**
   @method Triggers callbacks subscribed to itemDeleted$ -stream
-  @param    {Product} The product to be passed to the callback
+  @param  {Product} The product to be passed to the callback
   **/
   removeItem(product: Product) {
     this.itemRemovedSource.next(product);
