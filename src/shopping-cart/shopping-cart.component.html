@@ -5,13 +5,13 @@
   <!-- Display if no items in cart -->
   <span 
     *ngIf="cartProductTotal <= 0">
-    No items in cart
+      No items in cart
   </span>
   <!-- Item count -->
   <span 
-    *ngIf="cartProductTotal > 0" 
-    class="font-weight-bold">
-    {{cartProductTotal}}
+    class="font-weight-bold font-size-medium"
+    *ngIf="cartProductTotal > 0">
+      {{cartProductTotal}}
   </span>
   <!-- Special messages depending on item count -->
   <span 
@@ -20,7 +20,7 @@
   </span>
   <span 
     *ngIf="cartProductTotal > 1">
-     items in cart
+      items in cart
   </span>
   <i 
     class="icon-shopping-cart icon-in-circle icon-margin-left"></i>
@@ -32,7 +32,7 @@
   <!-- For empty cart -->
   <span 
     *ngIf="cartProductTotal <= 0">
-    Your shopping cart is empty.
+      Your shopping cart is empty.
   </span>
   <!-- When cart has products -->
   <div

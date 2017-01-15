@@ -10,7 +10,8 @@ import { Product } from '../product/product';
 
 @Component({
   selector: 'product-detail',
-  templateUrl: 'product-detail.component.html'
+  templateUrl: 'product-detail.component.html',
+  styleUrls: [String('./product-detail.component.css')] // For some reason typescript decided this isnt a string (tho it worked before), so hacked it with String()
 })
 
 /**
@@ -30,6 +31,11 @@ export class ProductDetailComponent{
   addToCart(): void {
     this.shoppingCartService.addItem(this.product)
   }
+
+  getProductImagePath(product: Product){
+    return '../../public/images/products/' + product.name + '.svg'
+  }
+
 
 
 }

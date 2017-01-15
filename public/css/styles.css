@@ -5,6 +5,10 @@
 /* BASE */
 /********/
 
+*{
+  box-sizing: border-box;
+}
+
 /* Set base font family */
 html, button, input, select, textarea,
 .pure-g [class *= "pure-u"] {
@@ -29,12 +33,20 @@ button{
   padding: 0.5rem 1rem;
 }
 
+button[disabled]{
+  opacity: 0.4;
+}
+
 /**********/
 /* LAYOUT */
 /**********/
 
+main{
+  margin: 0 1rem;
+}
+
 .container{
-  width: 960px; /* base layout width */
+  max-width: 960px; /* base layout width */
   margin: auto; 
 }
 
@@ -57,6 +69,14 @@ button{
 
 .font-size-base{
   font-size: 1rem;
+}
+
+.font-size-medium{
+  font-size: 1.4rem;
+}
+
+.font-size-large{
+  font-size: 2.4rem;
 }
 
 .font-weight-regular{
@@ -85,6 +105,12 @@ button{
 
 .no-margin{
   margin: 0;
+}
+
+/* Remove bullets from lists */
+.no-bullets{
+  list-style-type: none;
+  padding: 0;
 }
 
 /*********/

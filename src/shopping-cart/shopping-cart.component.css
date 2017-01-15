@@ -36,7 +36,7 @@ shopping-cart{
   margin-left: -0.75rem;
   height: 0.7rem;
   width: 1.5rem;
-  background-image: url(http://localhost:8080/assets/triangle-up-white.f5cf2ef4611ed5c9f60d9a4f95b6e974.svg);
+  background-image: url('../../public/images/theme/triangle-up-white.svg');
   background-repeat: no-repeat;
   background-position: center bottom;
 }
