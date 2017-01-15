@@ -13,6 +13,7 @@ import 'rxjs';
 
 // PureCSS
 import 'purecss/build/pure-min.css';
+import 'purecss/build/grids-responsive-min.css'; // Add the pureCSS grid system
 
 // Other vendors for example jQuery, Lodash or Bootstrap
 // You can import js, ts, css, sass, ...
