@@ -80,6 +80,16 @@ export class ShoppingCartComponent {
     this.updateCartStatus();
   }
 
+  /**
+  @method Gets image path of a product
+  @todo Combine this with the one in product-detail.component.ts
+  @param {Product} The product one needs the path for
+  @return {String}
+  **/
+  getProductImagePath(product: Product){
+    return '../../public/images/products/' + product.name + '.svg'
+  }
+
   // Event fired when this component is closed
   ngOnDestroy() {
     // prevent memory leak when component destroyed

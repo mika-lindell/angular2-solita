@@ -24,6 +24,8 @@ shopping-cart{
   position: absolute;
   padding: 2rem;
   min-height: 10rem;
+  min-width: 10rem;
+  z-index: 99;
 }
 
 /* To create the arrow on top of the dropdown */
@@ -45,9 +47,27 @@ shopping-cart{
   right: 0;
 }
 
+.cart-item{
+  margin: 2rem 0;
+}
+
+.cart-item-img{
+  max-width: 3rem;
+  margin-right: 1rem;
+}
+
+.cart-item-title{
+  margin-top: 0.3rem;
+}
+
+.cart-item-amount{
+  max-width: 3.5rem;
+}
+
 /*********/
 /* STATE */
 /*********/
+
 
 /*********/
 /* THEME */
@@ -56,3 +76,7 @@ shopping-cart{
 /****************/
 /* STATE CHANGE */
 /****************/
+
+.cart-empty{
+  padding: 2rem 0rem;
+}

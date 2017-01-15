@@ -14,7 +14,7 @@ Run with:
 
 Dev server is located at: [http://192.168.0.100:8080/]
 -> For one to access it with other devices in same LAN.
--> If this doesn't suit you, you can change it in *config/helpers.js*.
+-> If it doesn't work for you, change it to *http://localhost* at *config/helpers.js*.
 
 Build with:
 ```
