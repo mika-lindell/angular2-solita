@@ -12,6 +12,10 @@ Run with:
 – npm start
 ```
 
+Dev server is located at: [http://192.168.0.100:8080/]
+-> For one to access it with other devices in same LAN.
+-> If this doesn't suit you, you can change it in *config/helpers.js*.
+
 Build with:
 ```
 – npm run build
