@@ -95,10 +95,6 @@ main{
   font-style: italic;
 }
 
-.font-color-black{
-  color: black;
-}
-
 .text-align-right{
   text-align: right;
 }
@@ -140,12 +136,32 @@ button:active{
 /* THEME */
 /*********/
 
+.font-color-black{
+  color: black;
+}
+
+.font-color-white{
+  color: white;
+}
+
 .bg-color-grey{
   background-color: #e9e9e9;
 }
 
 .bg-color-white{
   background-color: white;
+}
+
+.bg-color-pink{
+  background-color: #ef5593;
+}
+
+.badge{
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  line-height: 1.9rem;
+  display: block;
 }
 
 .icon-in-circle{
