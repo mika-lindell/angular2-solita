@@ -10,31 +10,36 @@
       [alt]="product.name"
       class="pure-img" />
   </section>
-  <!-- product details -->
+  
   <section
-    class="product-info pure-u-md-3-5 pure-u-3-5">
-    
-    <h2
-      class="font-size-large no-margin">
-      {{product.name}}
-    </h2>
-    <p
-      class="text-align-justify">
-    {{product.description}}
-    </p>
+    class="product-info pure-u-md-4-5 pure-u-3-5">
+    <div
+      class="pure-g">
+      <!-- product details -->
+      <div
+        class="pure-u-md-3-5 pure-u-5-5">
+        <h2
+          class="font-size-large no-margin">
+          {{product.name}}
+        </h2>
+        <p>
+        {{product.description}}
+        </p>
+      </div>
+      <!-- Price & add to cart -button -->
+      <div
+        class="product-cta pure-u-md-2-5 pure-u-5-5 text-align-right">
+          <span 
+            class="cart-price font-size-large">
+            {{product.price}} &euro;
+          </span>
+          <p>
+            <button
+              (click)="addToCart()">
+              Add to cart
+            </button>
+          </p>
+      </div>
+    </div> 
   </section>
-  <!-- Price & add to cart -button -->
-  <section
-    class="product-cta pure-u-md-1-5 pure-u-5-5 text-align-right">
-    <div 
-      class="font-size-large">
-      {{product.price}} &euro;
-    </div>
-    <p>
-      <button
-        (click)="addToCart()">
-        Add to cart
-      </button>
-    </p>
-  </section> 
 </article>
