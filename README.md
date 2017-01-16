@@ -28,7 +28,7 @@ Dev server defaults at: [http://192.168.0.100:8080/]
 * If it doesn't work for you, change it to *http://localhost* or something else at *config/helpers.js*.
 
  
-Build with:
+**Build with:**
 ```
 – npm run build
 ```
