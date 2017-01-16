@@ -27,14 +27,17 @@ Dev server defaults at: [http://192.168.0.100:8080/]
 * For one to access it with other devices in same LAN.
 * If it doesn't work for you, change it to *http://localhost* or something else at *config/helpers.js*.
 
-<del>
+ 
 Build with:
 ```
 – npm run build
 ```
-*config/webpack.prod.js:*
-When building remember to set *publicPath* (cdn) as the path or url containing your assets e.g scripts, images & css.
-</del>
+
+* Copy *public/* and its contents to your server root
+* Copy *dist/index.html* to your server
+* Copy everything else in *dist/* to the *public/* you copied to your server
+
+Profit: Open *index.html*
 
 <del>
 Test with:
