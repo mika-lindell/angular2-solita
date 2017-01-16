@@ -1,4 +1,4 @@
 dist
 node_modules
-config/webpack.dev.ts
-config/webpack.prod.ts
+config/webpack.dev.js
+config/webpack.prod.js
