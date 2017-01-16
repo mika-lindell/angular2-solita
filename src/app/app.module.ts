@@ -1,13 +1,40 @@
-import { NgModule } from '@angular/core';
+import { NgModule }       from '@angular/core';
 import { BrowserModule }  from '@angular/platform-browser';
-import { AppComponent } from './app.component';
+import { HttpModule }     from '@angular/http';
+import { FormsModule }     from '@angular/forms';
+
+// Components
+import { AppComponent }   from './app.component';
+import { ProductsComponent } from '../products/products.component';
+import { ProductDetailComponent } from '../product/product-detail.component';
+import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component';
+
+// Services
+import { ProductsService } from '../products/products.service';
+import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
+
+// Modules and components made available for the app
 @NgModule({
   imports: [
-    BrowserModule
+    BrowserModule,
+    HttpModule,
+    FormsModule
   ],
+
   declarations: [
-    AppComponent
+    AppComponent,
+    ProductsComponent,
+    ProductDetailComponent,
+    ShoppingCartComponent
   ],
-  bootstrap: [ AppComponent ]
+
+  providers: [
+    ProductsService,
+    ShoppingCartService
+  ],
+
+  bootstrap: [ AppComponent ] // Use this component to start the app
+
 })
+
 export class AppModule { }

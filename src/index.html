@@ -1,12 +1,29 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <base href='/'>
-    <title>Angular With Webpack</title>
+<html lang="en">
+  <head>    
     <meta charset='UTF-8'>
     <meta content='width=device-width, initial-scale=1' name='viewport'>
+    <!-- Base -tag is very much needed by Angular -->
+    <base href='/'>
+    <title>Whee - The most definitive shape store in the world</title>
+    <!-- Fonts imported from Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Playfair+Display:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+    <!-- Minimum styles needed before the app has loaded -->
+    <link href="../public/css/preload.css" rel="stylesheet" type="text/css">
   </head>
   <body>
-    <my-app>Loading...</my-app>
+    <!-- Our app goes here -->
+    <app>
+      <!-- LOADING SCREEN -->
+      <!-- This will be a placeholder until it's replaced when the app is ready -->
+      <div 
+        class="loader-logo-animation">
+      </div>
+      <div 
+        class="loader-logo">
+          whee
+      </div>
+    </app>
   </body>
 </html>

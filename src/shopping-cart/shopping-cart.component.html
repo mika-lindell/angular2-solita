@@ -1,0 +1,127 @@
+<!-- Shopping cart status in masthead -->
+<button 
+  (click)="toggleCartDetails()"
+  class="cart-status-button pure-hidden-xs pure-hidden-sm pure-button font-weight-regular font-style-italic text-transform-none">
+  <!-- Display if no items in cart -->
+  <span 
+    *ngIf="cartProductTotal <= 0">
+      No items in cart
+  </span>
+  <!-- Item count -->
+  <span 
+    class="font-weight-bold"
+    *ngIf="cartProductTotal > 0">
+      {{cartProductTotal}}
+  </span>
+  <!-- Special messages depending on item count -->
+  <span 
+    *ngIf="cartProductTotal === 1">
+      item in cart
+  </span>
+  <span 
+    *ngIf="cartProductTotal > 1">
+      items in cart
+  </span>
+</button>
+<!-- Shopping cart icon-button in masthead -->
+<button 
+  (click)="toggleCartDetails()"
+  class="cart-action-button pure-button">
+  <i 
+    class="icon-shopping-cart  icon-in-circle icon-margin-left"></i>
+  <i
+    *ngIf="cartProductTotal > 0" 
+    class="badge cart-badge font-color-white bg-color-pink font-size-base font-weight-bold">
+    {{cartProductTotal}}
+  </i>
+
+</button>
+
+
+<!-- 'Shopping cart details' -dropdown -->
+<div 
+  [hidden]="!cartDetails"
+  class="cart-dropdown bg-color-white box-shadow-light">
+  <!-- For empty cart -->
+  <div 
+    *ngIf="cartProductTotal <= 0"
+    class="cart-empty">
+      Your shopping cart is empty.
+  </div>
+  <!-- When cart has products -->
+  <div
+    *ngIf="cartProductTotal > 0">
+    <ul
+      class="no-bullets"> 
+      <!-- Loop thru all products in cart -->
+      <li 
+        *ngFor="let item of shoppingCart"
+        class="cart-item">
+        <!-- Product image -->
+        <img 
+          [src]="getProductImagePath(item.product)" 
+          [alt]="item.product.name"  
+          class="cart-item-img pure-img float-left" />
+        <div
+          class="pure-g">
+          <div
+            class="pure-u-4-5">
+            <!-- Product details -->
+            <h3
+              class="cart-item-title no-margin truncate">
+                {{item.product.name}}
+            </h3>
+          </div>
+          <div
+            class="pure-u-1-5">
+              <!-- Button to remove a product from cart -->
+              <button 
+                class="pure-button" 
+                title="Remove from shopping cart"
+                (click)="removeProductFromCart(item.product)">
+                  <i class="icon-cross font-size-medium"></i>
+              </button>
+          </div>
+          <div
+            class="pure-u-2-5">
+            <!-- How many products? -->
+            <input 
+              class="cart-item-amount font-size-medium font-weight-bold text-align-right" 
+              type="number" min="1" max="100" step="1"
+              [(ngModel)]="item.count"
+              (ngModelChange)="updateCartStatus()"
+              (focus)="selectAllContent($event)" />
+          </div>
+          <div
+            class="pure-u-3-5 font-size-medium font-weight-bold text-align-right">
+              <!-- Product price -->
+              <i class="icon-cross font-size-base"></i>
+              {{item.product.price}} &euro;
+          </div>
+
+        </div>
+      </li>
+    </ul>
+    <!-- Total price -->
+    <hr />
+    <p
+      class="text-align-right">
+      <span>+ Shipping 0 &euro;</span>
+      <br/>
+      <span class="font-size-medium font-weight-bold">Total {{cartPriceTotal}} &euro;</span>
+    </p>
+  </div>
+  <div
+    class="text-align-right">
+    <!-- Close & Checkout -->
+    <button 
+      (click)="toggleCartDetails()"
+      class="pure-button">
+      Close
+    </button>
+    <!-- Disable if no items in cart -->
+    <button [disabled]="cartProductTotal <= 0">
+      Checkout
+    </button>
+  </div>
+</div>

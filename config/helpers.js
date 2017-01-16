@@ -9,4 +9,4 @@ function root(args) {
 }
 
 exports.root = root;
-exports.devServer = 'http://localhost:8080/';
+exports.devServer = 'http://192.168.0.100:8080/';

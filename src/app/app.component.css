@@ -1,7 +1,48 @@
-main {
-  padding: 1em;
-  font-family: Arial, Helvetica, sans-serif;
-  text-align: center;
-  margin-top: 50px;
-  display: block;
+/* SPECIAL STYLES FOR APP COMPONENT – Extends base styles from styles.css */
+/* Using SMACCS -principle -> https://smacss.com */
+
+
+/********/
+/* BASE */
+/********/
+
+/**********/
+/* LAYOUT */
+/**********/
+
+.masthead{
+  margin-top: 0;
 }
+
+/***********/
+/* MODULES */
+/***********/
+
+/*********/
+/* STATE */
+/*********/
+
+/*********/
+/* THEME */
+/*********/
+
+.logo{
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+  font-size: 4rem;
+  line-height: 4rem; /* To trim out the extra whitespace created by the font */
+  font-style: normal;
+  vertical-align: sub;
+}
+
+.brand-stripe::after{
+  content: '';
+  display: block;
+  height: 1.5rem;
+  background-image: url('../../public/images/theme/triangle-up-white.svg');
+  background-position: center bottom;
+
+  }
+/****************/
+/* STATE CHANGE */
+/****************/

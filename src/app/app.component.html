@@ -1,4 +1,21 @@
+<header 
+  class="pure-menu pure-menu-horizontal bg-color-grey brand-stripe">
+  <h1 
+    class="pure-menu-heading font-color-black text-transform-none masthead">
+    <span 
+      class="logo">
+      whee
+    </span>
+    <span 
+      class="slogan font-weight-regular font-size-base pure-hidden-xs pure-hidden-sm">
+      The most definitive shape store in the world
+    </span>
+  </h1>
+  <!-- Pass contents of the shopping cart to child component -->
+  <shopping-cart [shoppingCart]="shoppingCart">
+  </shopping-cart>
+</header>
 <main>
-  <h1>Hello from Angular App with Webpack!</h1>
-  <img src='../../public/images/angular.png'>
+  <products>
+  </products>
 </main>

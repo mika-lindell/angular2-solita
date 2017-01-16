@@ -1,0 +1,119 @@
+/* SPECIAL STYLES FOR SHOPPING CART COMPONENT – Extends base styles from styles.css */
+/* Using SMACCS -principle -> https://smacss.com */
+
+
+/********/
+/* BASE */
+/********/
+
+/**********/
+/* LAYOUT */
+/**********/
+
+shopping-cart{
+  position: absolute;
+  right: 5.2rem;
+  top: 2.7rem;
+}
+
+.cart-action-button{
+  position: fixed;
+  right: 1rem;
+  top: 1.3rem;
+}
+
+.cart-dropdown{
+  position: fixed;
+  right: 1rem;
+  top: 5.5rem;
+  z-index: 99;   
+
+  padding: 2rem;
+  min-height: 10rem;
+  min-width: 5rem;
+  max-width: 80%; /* To keep it nicely on screen in mobile */
+
+}
+
+.cart-item{
+  margin: 2rem 0;
+}
+
+.cart-item-img{
+  max-width: 3rem;
+  margin-right: 1rem;
+}
+
+.cart-item-title{
+  margin-top: 0.3rem;
+}
+
+.cart-item-amount{
+  max-width: 3.5rem;
+}
+
+.cart-badge{
+  position: absolute;
+  top: -0.5rem;
+  right: 0.5rem;
+}
+/***********/
+/* MODULES */
+/***********/
+
+/*********/
+/* STATE */
+/*********/
+
+
+/*********/
+/* THEME */
+/*********/
+
+.badge{
+  border-radius: 50%;
+  height: 2rem;
+  width: 2rem;
+  line-height: 1.9rem;
+  display: block;
+}
+
+.icon-in-circle{
+  display: inline-block;
+  border-radius: 50%;
+  width: 3.5rem;
+  height: 3.5rem;
+  font-size: 1.7rem;
+  line-height: 3.5rem;
+  vertical-align: middle;
+
+  background-color: black;
+  color: #e9e9e9;
+}
+
+.icon-margin-left{
+  margin-left: 0.5rem;
+}
+
+/* To create the arrow on top of the dropdown */
+.cart-dropdown::before{
+  content: '';
+  display: block;
+  position: absolute;
+  top: -0.5rem;
+  right: 2rem;
+  margin-left: -0.75rem;
+  height: 0.7rem;
+  width: 1.5rem;
+  background-image: url('../../public/images/theme/triangle-up-white.svg');
+  background-repeat: no-repeat;
+  background-position: center bottom;
+}
+
+/****************/
+/* STATE CHANGE */
+/****************/
+
+.cart-empty{
+  padding: 2rem 0rem;
+}
