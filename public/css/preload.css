@@ -1,0 +1,136 @@
+/* STYLES LOADED BEFORE APP IS READY – For loading screens and such */
+/* Using SMACCS -principle -> https://smacss.com */
+
+
+/********/
+/* BASE */
+/********/
+
+/* Make document height equal viewport height (if it's smaller) – needen for vertical centering */
+html,
+body{
+  height: 100%;
+  width: 100%
+}
+
+/**********/
+/* LAYOUT */
+/**********/
+
+/***********/
+/* MODULES */
+/***********/
+
+/*********/
+/* STATE */
+/*********/
+
+/*********/
+/* THEME */
+/*********/
+
+/* Elements required for the loading animation */
+.loader-logo,
+.loader-logo-animation{
+  position: absolute;
+  top: 50%;
+  margin-top: -4rem;
+  left: 50%;
+  margin-left: -4rem;
+
+  font-family: 'Pacifico', cursive;
+  font-weight: 400;
+  font-size: 3rem;
+  text-align: center;
+
+  border-radius: 50%;
+  
+  height: 8rem;
+  width: 8rem;
+  line-height: 7.5rem;
+  
+  background-color: black;
+  color: white;
+}
+
+
+
+/****************/
+/* STATE CHANGE */
+/****************/
+
+/* Animation and keyframes for the loader animation */
+.loader-logo-animation{
+  animation: animationFrames linear 1s;
+  animation-iteration-count: infinite;
+  transform-origin: 50% 50%;
+  -webkit-animation: animationFrames linear 1s;
+  -webkit-animation-iteration-count: infinite;
+  -webkit-transform-origin: 50% 50%;
+  -moz-animation: animationFrames linear 1s;
+  -moz-animation-iteration-count: infinite;
+  -moz-transform-origin: 50% 50%;
+  -o-animation: animationFrames linear 1s;
+  -o-animation-iteration-count: infinite;
+  -o-transform-origin: 50% 50%;
+  -ms-animation: animationFrames linear 1s;
+  -ms-animation-iteration-count: infinite;
+  -ms-transform-origin: 50% 50%;
+}
+
+/* Loading animation keyframes -> generator http://cssanimate.com */
+@keyframes animationFrames{
+  0% {
+    opacity:0.5;
+    transform:  scaleX(1.00) scaleY(1.00) ;
+  }
+  100% {
+    opacity:0;
+    transform:  scaleX(1.50) scaleY(1.50) ;
+  }
+}
+
+@-moz-keyframes animationFrames{
+  0% {
+    opacity:0.5;
+    -moz-transform:  scaleX(1.00) scaleY(1.00) ;
+  }
+  100% {
+    opacity:0;
+    -moz-transform:  scaleX(1.50) scaleY(1.50) ;
+  }
+}
+
+@-webkit-keyframes animationFrames {
+  0% {
+    opacity:0.5;
+    -webkit-transform:  scaleX(1.00) scaleY(1.00) ;
+  }
+  100% {
+    opacity:0;
+    -webkit-transform:  scaleX(1.50) scaleY(1.50) ;
+  }
+}
+
+@-o-keyframes animationFrames {
+  0% {
+    opacity:0.5;
+    -o-transform:  scaleX(1.00) scaleY(1.00) ;
+  }
+  100% {
+    opacity:0;
+    -o-transform:  scaleX(1.50) scaleY(1.50) ;
+  }
+}
+
+@-ms-keyframes animationFrames {
+  0% {
+    opacity:0.5;
+    -ms-transform:  scaleX(1.00) scaleY(1.00) ;
+  }
+  100% {
+    opacity:0;
+    -ms-transform:  scaleX(1.50) scaleY(1.50) ;
+  }
+}
+
