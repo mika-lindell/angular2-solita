@@ -1,24 +1,24 @@
-# Having some good times with Angular2.
+# Having some good times with Angular2
 
 Requires NodeJS & npm.
 
-To install:
+**To install:**
 ```
 – npm install
 ```
 
 Make copies of following files:
-* config/webpack.dev.default.ts
-* config/webpack.prod.default.ts
+* *config/webpack.dev.default.ts*
+* *config/webpack.prod.default.ts*
 
 And rename copied files to:
-* config/webpack.dev.ts
-* config/webpack.prod.ts
+* *config/webpack.dev.ts*
+* *config/webpack.prod.ts*
 
 Profit: Change local config without messing it in repo.
 
 
-Run with:
+**Run with:**
 ```
 – npm start
 ```
