@@ -22,16 +22,13 @@
 /* THEME */
 /*********/
 
-.product-img img{
-  max-width: 200px;
-}
-
 .product{
   padding: 2rem 0;
 }
 
+/* For small screens -> see media queries */
 .product-info{
-  padding: 1rem 1rem 0 2rem;
+  padding: 1rem 0 0 2rem;
 }
 
 .product-detail{
@@ -41,3 +38,11 @@
 /****************/
 /* STATE CHANGE */
 /****************/
+
+/* For medium and up */
+@media screen and (min-width: 48em){
+  .product-info{
+    padding: 1rem 0 0 2rem;
+  }
+}
+

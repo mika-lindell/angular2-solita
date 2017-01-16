@@ -1,7 +1,7 @@
-<!-- Shopping cart button in the main menu -->
+<!-- Shopping cart status in masthead -->
 <button 
   (click)="toggleCartDetails()"
-  class="pure-button font-weight-regular font-style-italic text-transform-none">
+  class="cart-status-button pure-hidden-xs pure-hidden-sm pure-button font-weight-regular font-style-italic text-transform-none">
   <!-- Display if no items in cart -->
   <span 
     *ngIf="cartProductTotal <= 0">
@@ -9,7 +9,7 @@
   </span>
   <!-- Item count -->
   <span 
-    class="font-weight-bold font-size-medium"
+    class="font-weight-bold"
     *ngIf="cartProductTotal > 0">
       {{cartProductTotal}}
   </span>
@@ -22,8 +22,13 @@
     *ngIf="cartProductTotal > 1">
       items in cart
   </span>
+</button>
+<!-- Shopping cart icon-button in masthead -->
+<button 
+  (click)="toggleCartDetails()"
+  class="cart-action-button pure-button">
   <i 
-    class="icon-shopping-cart icon-in-circle icon-margin-left"></i>
+    class="icon-shopping-cart  icon-in-circle icon-margin-left"></i>
   <i
     *ngIf="cartProductTotal > 0" 
     class="badge cart-badge font-color-white bg-color-pink font-size-base font-weight-bold">
@@ -36,7 +41,7 @@
 <!-- 'Shopping cart details' -dropdown -->
 <div 
   [hidden]="!cartDetails"
-  class="dropdown dropdown-right bg-color-white box-shadow-light">
+  class="cart-dropdown bg-color-white box-shadow-light">
   <!-- For empty cart -->
   <div 
     *ngIf="cartProductTotal <= 0"
@@ -84,7 +89,8 @@
               class="cart-item-amount font-size-medium font-weight-bold text-align-right" 
               type="number" min="1" max="100" step="1"
               [(ngModel)]="item.count"
-              (ngModelChange)="updateCartStatus()" />
+              (ngModelChange)="updateCartStatus()"
+              (focus)="selectAllContent($event)" />
           </div>
           <div
             class="pure-u-3-5 font-size-medium font-weight-bold text-align-right">
@@ -105,7 +111,8 @@
       <span class="font-size-medium font-weight-bold">Total {{cartPriceTotal}} &euro;</span>
     </p>
   </div>
-  <div>
+  <div
+    class="text-align-right">
     <!-- Close & Checkout -->
     <button 
       (click)="toggleCartDetails()"

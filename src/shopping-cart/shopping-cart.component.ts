@@ -90,6 +90,14 @@ export class ShoppingCartComponent {
     return '../../public/images/products/' + product.name + '.svg'
   }
 
+  /**
+  @method Selects all text in input – should be used in context of event fired
+  @param {any} Event object containing the target element
+  **/
+  selectAllContent(ev:any) {
+    ev.target.select();
+  }
+
   // Event fired when this component is closed
   ngOnDestroy() {
     // prevent memory leak when component destroyed
