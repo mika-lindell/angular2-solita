@@ -9,7 +9,7 @@ import { Product } from '../product/product';
 import { ShoppingCartItem } from '../shopping-cart/shopping-cart-item';
 
 // Styles
-import '../../public/css/styles.css'; // Import styles common for all components
+import '../../public/css/styles.css'; // Import styles common for all components – do it here so we can override things imported in vendor.ts
 
 @Component({
   selector: 'app',

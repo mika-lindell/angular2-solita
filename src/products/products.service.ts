@@ -18,7 +18,7 @@ import { Product } from '../product/product';
   constructor(private http: Http) { }
 
   /**
-  @function   Get all products
+  @method   Get all products
   @return     {array}  Array of Product-objects
   **/
   getProducts(): Promise<Product[]> {
@@ -29,7 +29,7 @@ import { Product } from '../product/product';
   }
 
   /**
-  @function   Get a single product
+  @method   Get a single product
   @param      {number}  id The unique id of the desired product
   @return     {mixed}   The desired product as a Product-object or undefined if no product was found
   **/
@@ -42,7 +42,7 @@ import { Product } from '../product/product';
   }
 
   /**
-  @function Crude error handling for dev purposes
+  @method Crude error handling for dev purposes
   **/
   private handleError(error: any): Promise<any> {
     console.error('An error occurred', error); // for demo purposes only

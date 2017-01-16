@@ -1,0 +1,48 @@
+/* SPECIAL STYLES FOR APP COMPONENT – Extends base styles from styles.css */
+/* Using SMACCS -principle -> https://smacss.com */
+
+
+/********/
+/* BASE */
+/********/
+
+/**********/
+/* LAYOUT */
+/**********/
+
+/***********/
+/* MODULES */
+/***********/
+
+/*********/
+/* STATE */
+/*********/
+
+/*********/
+/* THEME */
+/*********/
+
+.product{
+  padding: 2rem 0;
+}
+
+/* For small screens -> see media queries */
+.product-info{
+  padding: 1rem 0 0 2rem;
+}
+
+.product-detail{
+  padding:  1rem 0 0 0
+}
+
+/****************/
+/* STATE CHANGE */
+/****************/
+
+/* For medium and up */
+@media screen and (min-width: 48em){
+  .product-info{
+    padding: 1rem 0 0 2rem;
+  }
+}
+

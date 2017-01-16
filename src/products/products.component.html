@@ -1,7 +1,13 @@
-<ul class="products">
-  <li *ngFor="let product of products">
-    <!-- pass the product -variable to product-detail -component -->
-    <product-detail [product]="product">
-    </product-detail>
-  </li>
-</ul>
+<div 
+  class="container">
+    <ul 
+      class="no-bullets">
+      <li 
+        *ngFor="let product of products">
+        <!-- pass the product -variable to product-detail -component -->
+        <product-detail 
+          [product]="product">
+        </product-detail>
+      </li>
+    </ul>
+</div>
