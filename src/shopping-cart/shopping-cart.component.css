@@ -28,7 +28,7 @@ shopping-cart{
   top: 5.5rem;
   z-index: 99;   
 
-  padding: 2rem;
+  padding: 1rem 2rem 2rem 2rem;
   min-height: 10rem;
   min-width: 5rem;
   max-width: 80%; /* To keep it nicely on screen in mobile */
