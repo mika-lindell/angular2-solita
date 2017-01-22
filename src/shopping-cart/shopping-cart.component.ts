@@ -101,8 +101,15 @@ export class ShoppingCartComponent {
 
   /**
   @method Notifies the subscribers of shoppingCartService that a product should be removed from shopping cart
+  @param {Product} Product to be removed
+  @param {ev} Associated event – if supplied, event.stopPropagation will be called
   **/
-  removeProductFromCart(product: Product){
+  removeProductFromCart(product: Product, ev: MouseEvent){
+
+    if(typeof ev !== 'undefined'){
+      ev.stopPropagation();
+    }
+
     this.shoppingCartService.removeItem(product);
     this.updateCartStatus();
   }

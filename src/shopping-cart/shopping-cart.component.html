@@ -80,7 +80,7 @@
                 <button 
                   class="pure-button" 
                   title="Remove from shopping cart"
-                  (click)="removeProductFromCart(item.product)">
+                  (click)="removeProductFromCart(item.product, $event)">
                     <i class="icon-cross font-size-medium"></i>
                 </button>
             </div>
@@ -108,11 +108,11 @@
         </li>
       </ul>
       <!-- Total price -->
-      <hr />
+      <hr>
       <p
         class="text-align-right">
         <span>+ Shipping 0 &euro;</span>
-        <br/>
+        <br>
         <span class="font-size-medium font-weight-bold">Total {{cartPriceTotal}} &euro;</span>
       </p>
     </div>
