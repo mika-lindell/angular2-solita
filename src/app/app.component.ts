@@ -85,7 +85,7 @@ export class AppComponent implements OnDestroy {
       // ...to see if the product we received is in cart...
       if(this.shoppingCart[i].product.id === remProduct.id){
         // ...and if found, remove item from cart
-        this.shoppingCart.splice(+i, 1); // adding plus before i will convert it to number for splice to accept it ('for' casts it as a string)
+        this.shoppingCart.splice(parseInt(i), 1);
         break;
       }
     }
