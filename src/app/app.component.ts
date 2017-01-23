@@ -1,4 +1,15 @@
-import { Component, Input, OnDestroy } from '@angular/core';
+import { 
+  Component, 
+  Input, 
+  OnDestroy, 
+  animate,
+  trigger,
+  state,
+  style,
+  transition,
+  keyframes 
+} from '@angular/core';
+
 import { Subscription }   from 'rxjs/Subscription';
 
 // Services
@@ -15,7 +26,17 @@ import '../../public/css/styles.css'; // Import styles common for all components
   selector: 'app',
   providers: [ShoppingCartService], // This component should be the provider of this service – we want child components to inherit this instance for cross-component communication
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  animations: [
+    trigger('fadeIn', [
+      transition('void => *', [
+        animate(300, keyframes([
+          style({opacity: 0, offset: 0}),
+          style({opacity: 1, offset: 1.0})
+        ]))
+      ])
+    ])
+  ]
 })
 
 
