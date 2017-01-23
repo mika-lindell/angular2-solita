@@ -43,7 +43,8 @@
 
   <!-- 'Shopping cart details' -dropdown -->
   <div 
-    [hidden]="!cartDetails" 
+    *ngIf="cartDetails" 
+    [@cartDropdown]="cartDetails"
     class="cart-dropdown bg-color-white box-shadow-light">
     <!-- For empty cart -->
     <div 

@@ -1,12 +1,13 @@
 import { 
   Component, 
   Input,  
+  animate,
   trigger,
   state,
   style,
   transition,
-  keyframes,
-  animate } from '@angular/core';
+  keyframes
+} from '@angular/core';
 
 import { Subscription }   from 'rxjs/Subscription';
 
@@ -46,6 +47,23 @@ import { ShoppingCartItem } from '../shopping-cart/shopping-cart-item';
           style({transform: 'scale(1.0)', offset: 0}),
           style({transform: 'scale(1.2)', offset: 0.5}),
           style({transform: 'scale(1.0)', offset: 1.0})
+        ]))
+      ])
+    ]),
+    // Animation for cart dropdown
+    trigger('cartDropdown', [
+      transition('void => *', [
+        animate(300, keyframes([
+          style({opacity: 0.0, transform: 'scale(0.0)', offset: 0}),
+          style({opacity: 0.5, transform: 'scale(1.1)', offset: 0.5}),
+          style({opacity: 1.0, transform: 'scale(1.0)', offset: 1.0})
+        ]))
+      ]),
+      transition('* => void', [
+        animate(300, keyframes([
+          style({opacity: 1.0, transform: 'scale(1.0)', offset: 0}),
+          style({opacity: 0.5, transform: 'scale(1.1)', offset: 0.5}),
+          style({opacity: 0.0, transform: 'scale(0.0)', offset: 1.0})
         ]))
       ])
     ])
