@@ -28,14 +28,16 @@ import { ShoppingCartItem } from '../shopping-cart/shopping-cart-item';
     // Animation for the pink badge
     trigger('addItemToCart', [
       transition('void => *', [
-        animate(150, keyframes([
+        animate(300, keyframes([
           style({transform: 'scale(0.0)', offset: 0}),
+          style({transform: 'scale(1.2)', offset: 0.5}),
           style({transform: 'scale(1.0)', offset: 1.0})
         ]))
       ]),
       transition('* => void', [
-        animate(150, keyframes([
+        animate(300, keyframes([
           style({transform: 'scale(1.0)', offset: 0}),
+          style({transform: 'scale(1.2)', offset: 0.5}),
           style({transform: 'scale(0.0)', offset: 1.0})
         ]))
       ]),
