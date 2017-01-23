@@ -46,3 +46,9 @@
 /****************/
 /* STATE CHANGE */
 /****************/
+
+.app-container{ /* To hide the loader */
+  z-index: 1;
+  position: relative;
+  background-color: white; 
+}
