@@ -13,6 +13,9 @@ import { ShoppingCartComponent } from '../shopping-cart/shopping-cart.component'
 import { ProductsService } from '../products/products.service';
 import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
 
+// Shared directives
+import { ClickOutsideDirective } from '../shared/click-outside.directive';
+
 // Modules and components made available for the app
 @NgModule({
   imports: [
@@ -25,7 +28,8 @@ import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
     AppComponent,
     ProductsComponent,
     ProductDetailComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    ClickOutsideDirective
   ],
 
   providers: [
