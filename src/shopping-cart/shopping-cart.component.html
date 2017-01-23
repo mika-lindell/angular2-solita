@@ -33,7 +33,7 @@
       class="icon-shopping-cart  icon-in-circle icon-margin-left"></i>
     <i
       *ngIf="cartProductTotal > 0"
-      [@addItemToCart]="cartProductTotal" 
+      [@popInOut]="cartProductTotal" 
       class="badge cart-badge font-color-white bg-color-pink font-size-base font-weight-bold">
         {{cartProductTotal}}
     </i>
@@ -44,22 +44,25 @@
   <!-- 'Shopping cart details' -dropdown -->
   <div 
     *ngIf="cartDetails" 
-    [@cartDropdown]="cartDetails"
+    [@popInOut]="any"
     class="cart-dropdown bg-color-white box-shadow-light">
     <!-- For empty cart -->
     <div 
       *ngIf="cartProductTotal <= 0"
+      [@scaleInOut]="any" 
       class="cart-empty">
         Your shopping cart is empty.
     </div>
     <!-- When cart has products -->
     <div
-      *ngIf="cartProductTotal > 0">
+      *ngIf="cartProductTotal > 0"
+      [@scaleInOut]="any" >
       <ul
         class="no-bullets"> 
         <!-- Loop thru all products in cart -->
         <li 
-          *ngFor="let item of shoppingCart"
+          *ngFor="let item of shoppingCart" 
+          [@scaleInOut]="any" 
           class="cart-item">
           <!-- Product image -->
           <img 
