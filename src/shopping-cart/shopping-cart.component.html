@@ -32,9 +32,10 @@
     <i 
       class="icon-shopping-cart  icon-in-circle icon-margin-left"></i>
     <i
-      *ngIf="cartProductTotal > 0" 
+      *ngIf="cartProductTotal > 0"
+      [@addItemToCart]="cartProductTotal" 
       class="badge cart-badge font-color-white bg-color-pink font-size-base font-weight-bold">
-      {{cartProductTotal}}
+        {{cartProductTotal}}
     </i>
 
   </button>

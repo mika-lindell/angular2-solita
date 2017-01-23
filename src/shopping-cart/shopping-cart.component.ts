@@ -1,4 +1,13 @@
-import { Component, Input } from '@angular/core';
+import { 
+  Component, 
+  Input,  
+  trigger,
+  state,
+  style,
+  transition,
+  keyframes,
+  animate } from '@angular/core';
+
 import { Subscription }   from 'rxjs/Subscription';
 
 // Services
@@ -14,7 +23,32 @@ import { ShoppingCartItem } from '../shopping-cart/shopping-cart-item';
 @Component({
   selector: 'shopping-cart',
   templateUrl: './shopping-cart.component.html',
-  styleUrls: [String('./shopping-cart.component.css')] // For some reason typescript decided this isnt a string (tho it worked before), so hacked it with String()
+  styleUrls: [String('./shopping-cart.component.css')], // For some reason typescript decided this isnt a string (tho it worked before), so hacked it with String()
+  animations: [
+    // Animation for the pink badge
+    trigger('addItemToCart', [
+      transition('void => *', [
+        animate(150, keyframes([
+          style({transform: 'scale(0.0)', offset: 0}),
+          style({transform: 'scale(1.0)', offset: 1.0})
+        ]))
+      ]),
+      transition('* => void', [
+        animate(150, keyframes([
+          style({transform: 'scale(1.0)', offset: 0}),
+          style({transform: 'scale(0.0)', offset: 1.0})
+        ]))
+      ]),
+      transition('* => *', [
+        animate(300, keyframes([
+          style({transform: 'scale(1.0)', offset: 0}),
+          style({transform: 'scale(1.2)', offset: 0.5}),
+          style({transform: 'scale(1.0)', offset: 1.0})
+        ]))
+      ])
+    ])
+  ]
+
 })
 
 /**
