@@ -26,44 +26,43 @@ import { ShoppingCartItem } from '../shopping-cart/shopping-cart-item';
   templateUrl: './shopping-cart.component.html',
   styleUrls: [String('./shopping-cart.component.css')], // For some reason typescript decided this isnt a string (tho it worked before), so hacked it with String()
   animations: [
-    // Animation for the pink badge
-    trigger('addItemToCart', [
+
+    trigger('popInOut', [
       transition('void => *', [
         animate(300, keyframes([
           style({transform: 'scale(0.0)', offset: 0}),
-          style({transform: 'scale(1.2)', offset: 0.5}),
+          style({transform: 'scale(1.1)', offset: 0.5}),
           style({transform: 'scale(1.0)', offset: 1.0})
         ]))
       ]),
       transition('* => void', [
         animate(300, keyframes([
           style({transform: 'scale(1.0)', offset: 0}),
-          style({transform: 'scale(1.2)', offset: 0.5}),
+          style({transform: 'scale(1.1)', offset: 0.5}),
           style({transform: 'scale(0.0)', offset: 1.0})
         ]))
       ]),
       transition('* => *', [
         animate(300, keyframes([
           style({transform: 'scale(1.0)', offset: 0}),
-          style({transform: 'scale(1.2)', offset: 0.5}),
+          style({transform: 'scale(1.1)', offset: 0.5}),
           style({transform: 'scale(1.0)', offset: 1.0})
         ]))
       ])
     ]),
-    // Animation for cart dropdown
-    trigger('cartDropdown', [
+
+    trigger('scaleInOut', [
       transition('void => *', [
         animate(300, keyframes([
-          style({opacity: 0.0, transform: 'scale(0.0)', offset: 0}),
-          style({opacity: 0.5, transform: 'scale(1.1)', offset: 0.5}),
-          style({opacity: 1.0, transform: 'scale(1.0)', offset: 1.0})
+          style({opacity: 0.0, transform: 'scaleY(0.0)', offset: 0}),
+          style({opacity: 1.0, transform: 'scaleY(1.1)', offset: 0.5}),
+          style({opacity: 1.0, transform: 'scaleY(1.0)', offset: 1.0})
         ]))
       ]),
       transition('* => void', [
-        animate(300, keyframes([
-          style({opacity: 1.0, transform: 'scale(1.0)', offset: 0}),
-          style({opacity: 0.5, transform: 'scale(1.1)', offset: 0.5}),
-          style({opacity: 0.0, transform: 'scale(0.0)', offset: 1.0})
+        animate(150, keyframes([
+          style({opacity: 1.0, transform: 'scaleY(1.0)', offset: 0}),
+          style({opacity: 0.0, transform: 'scaleY(0.0)', offset: 1.0})
         ]))
       ])
     ])
