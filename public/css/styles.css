@@ -13,11 +13,11 @@
 html, button, input, select, textarea,
 .pure-g [class *= "pure-u"] {
     /* Set your content font stack here: */
-    font-family: 'Playfair Display', serif;
+    font-family: 'Overpass', sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6{
-  font-family: 'Playfair Display', serif;
+  font-family: 'Overpass', sans-serif;
   font-weight: 700;
   font-style: italic;
 }
@@ -31,6 +31,7 @@ button{
   box-shadow: none;
   cursor: pointer;
   padding: 0.5rem 1rem;
+  transition: all 0.1s;
 }
 
 button[disabled]{
@@ -135,12 +136,21 @@ button.pure-button{
   text-overflow: ellipsis;
 }
 
+.transition-all{
+  transition: all 0.2s;
+}
+
 /*********/
 /* STATE */
 /*********/
 
+button:hover{
+  transform: scale(1.1, 1.1);
+}
+
 button:active{
   box-shadow: inherit !important; /* Use inherit to use the style in normal state */
+  transform: translateY(0.1rem);
 }
 
 /*********/
@@ -172,6 +182,8 @@ button:active{
   -moz-box-shadow: 0px 10px 46px -9px rgba(0,0,0,0.75);
   box-shadow: 0px 10px 46px -9px rgba(0,0,0,0.75);
 }
+
+
 
 /****************/
 /* STATE CHANGE */

@@ -1,4 +1,15 @@
-import { Component, Input, OnDestroy } from '@angular/core';
+import { 
+  Component, 
+  Input, 
+  OnDestroy, 
+  animate,
+  trigger,
+  state,
+  style,
+  transition,
+  keyframes 
+} from '@angular/core';
+
 import { Subscription }   from 'rxjs/Subscription';
 
 // Services
@@ -15,7 +26,17 @@ import '../../public/css/styles.css'; // Import styles common for all components
   selector: 'app',
   providers: [ShoppingCartService], // This component should be the provider of this service – we want child components to inherit this instance for cross-component communication
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'],
+  animations: [
+    trigger('fadeIn', [
+      transition('void => *', [
+        animate(400, keyframes([
+          style({opacity: 0, offset: 0}),
+          style({opacity: 1, offset: 1.0})
+        ]))
+      ])
+    ])
+  ]
 })
 
 
@@ -85,7 +106,7 @@ export class AppComponent implements OnDestroy {
       // ...to see if the product we received is in cart...
       if(this.shoppingCart[i].product.id === remProduct.id){
         // ...and if found, remove item from cart
-        this.shoppingCart.splice(+i, 1); // adding plus before i will convert it to number for splice to accept it ('for' casts it as a string)
+        this.shoppingCart.splice(parseInt(i), 1);
         break;
       }
     }

@@ -1,11 +1,21 @@
-// Component for managing the visual representation of the shopping cart
-// The cart data is stored in AppComponent for it to be available for all components in the family
+import { 
+  Component, 
+  Input,  
+  animate,
+  trigger,
+  state,
+  style,
+  transition,
+  keyframes
+} from '@angular/core';
 
-import { Component, Input } from '@angular/core';
 import { Subscription }   from 'rxjs/Subscription';
 
 // Services
 import { ShoppingCartService } from '../shopping-cart/shopping-cart.service';
+
+// Directives
+import { ClickOutsideDirective } from '../shared/click-outside.directive';
 
 // Types
 import { Product } from '../product/product';
@@ -14,15 +24,63 @@ import { ShoppingCartItem } from '../shopping-cart/shopping-cart-item';
 @Component({
   selector: 'shopping-cart',
   templateUrl: './shopping-cart.component.html',
-  styleUrls: [String('./shopping-cart.component.css')] // For some reason typescript decided this isnt a string (tho it worked before), so hacked it with String()
+  styleUrls: [String('./shopping-cart.component.css')], // For some reason typescript decided this isnt a string (tho it worked before), so hacked it with String()
+  animations: [
+
+    trigger('popInOut', [
+      transition('void => *', [
+        animate(300, keyframes([
+          style({transform: 'scale(0.0)', offset: 0}),
+          style({transform: 'scale(1.1)', offset: 0.5}),
+          style({transform: 'scale(1.0)', offset: 1.0})
+        ]))
+      ]),
+      transition('* => void', [
+        animate(300, keyframes([
+          style({transform: 'scale(1.0)', offset: 0}),
+          style({transform: 'scale(1.1)', offset: 0.5}),
+          style({transform: 'scale(0.0)', offset: 1.0})
+        ]))
+      ]),
+      transition('* => *', [
+        animate(300, keyframes([
+          style({transform: 'scale(1.0)', offset: 0}),
+          style({transform: 'scale(1.1)', offset: 0.5}),
+          style({transform: 'scale(1.0)', offset: 1.0})
+        ]))
+      ])
+    ]),
+
+    trigger('scaleInOut', [
+      transition('void => *', [
+        animate(300, keyframes([
+          style({opacity: 0.0, transform: 'scaleY(0.0)', offset: 0}),
+          style({opacity: 1.0, transform: 'scaleY(1.1)', offset: 0.5}),
+          style({opacity: 1.0, transform: 'scaleY(1.0)', offset: 1.0})
+        ]))
+      ]),
+      transition('* => void', [
+        animate(150, keyframes([
+          style({opacity: 1.0, transform: 'scaleY(1.0)', offset: 0}),
+          style({opacity: 0.0, transform: 'scaleY(0.0)', offset: 1.0})
+        ]))
+      ])
+    ])
+  ]
+
 })
 
+/**
+@class Component for managing the visual representation of the shopping cart.
+       The cart data is stored in AppComponent for it to be available for all components in the family
+**/
 export class ShoppingCartComponent { 
 
   @Input() shoppingCart: ShoppingCartItem[]; // This should be passed on to this component by parent component via a template
   cartProductTotal: number = 0; // The total amount of products in the cart — updated via updateCartStatus
   cartPriceTotal: number = 0;   // The total price of products in the cart — updated via updateCartStatus
-  cartDetails: boolean = false; 
+  cartDetails: boolean = false; // This variable is used in templates to set the display of desired elemets
+  private cartDetailsSuppress: boolean = false;
 
   subscriptionAddItem: Subscription;  // To hold service subscription to be notified when item is added to shopping cart
 
@@ -33,7 +91,7 @@ export class ShoppingCartComponent {
     // Subscribe to service handling adding items to shopping cart – to open the cart details when item is added
     this.subscriptionAddItem = shoppingCartService.itemAdded$.subscribe(
       newProduct => {
-        this.cartDetails = true; // Open detailed shopping cart -dropdown when something is added
+        this.toggleCartDetails('show', true); // Open detailed shopping cart -dropdown when something is added
         this.updateCartStatus();
     });
 
@@ -41,9 +99,31 @@ export class ShoppingCartComponent {
 
   /**
   @method Toggles display of the shopping cart details-dropdown
+  @param {String} Can be 'toggle' 'hide' or 'show' - defaults to 'toggle'
+  @param {Boolean} Suppress the next call of this function.
   **/
-  toggleCartDetails(){
-    this.cartDetails = !this.cartDetails; // This variable is used in templates to set the display of desired elemets
+  toggleCartDetails(action: string, suppress: boolean = false){
+    
+    if(this.cartDetailsSuppress === true){
+      this.cartDetailsSuppress = false;
+      return;
+    }
+
+    if(suppress){
+      this.cartDetailsSuppress = true;
+    }
+
+    if(action === 'show'){
+      this.cartDetails = true; 
+    }
+    else if(action === 'hide'){
+      this.cartDetails = false; 
+    }
+    else if(action === 'toggle' || typeof action === 'undefined'){
+
+      this.cartDetails = !this.cartDetails; 
+    }
+  
   }
 
   /**
@@ -74,8 +154,15 @@ export class ShoppingCartComponent {
 
   /**
   @method Notifies the subscribers of shoppingCartService that a product should be removed from shopping cart
+  @param {Product} Product to be removed
+  @param {ev} Associated event – if supplied, event.stopPropagation will be called
   **/
-  removeProductFromCart(product: Product){
+  removeProductFromCart(product: Product, ev: MouseEvent){
+
+    if(typeof ev !== 'undefined'){
+      ev.stopPropagation();
+    }
+
     this.shoppingCartService.removeItem(product);
     this.updateCartStatus();
   }
