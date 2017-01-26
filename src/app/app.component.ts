@@ -1,6 +1,7 @@
 import { 
   Component, 
   Input, 
+  OnInit,
   OnDestroy, 
   animate,
   trigger,
@@ -29,10 +30,12 @@ import '../../public/css/styles.css'; // Import styles common for all components
   styleUrls: ['./app.component.css'],
   animations: [
     trigger('fadeIn', [
-      transition('void => *', [
+      state('loading', style({opacity: 0})),
+      state('ready', style({opacity: 1})),
+      transition('* <=> ready', [
         animate(400, keyframes([
           style({opacity: 0, offset: 0}),
-          style({opacity: 1, offset: 1.0})
+          style({opacity: 1, offset: 0.9})
         ]))
       ])
     ])
@@ -48,10 +51,14 @@ export class AppComponent implements OnDestroy {
   @Input() shoppingCart: ShoppingCartItem[] = []; // This property keeps track of products in shopping cart 
   subscriptionAddItem: Subscription;  // To hold service subscription to be notified when item is added to shopping cart
   subscriptionRemoveItem: Subscription;  // To hold service subscription to be notified when item is removed from shopping cart
+  componentState: String;
+
 
   constructor(
     private shoppingCartService: ShoppingCartService // Create service instance on component creation
     ){
+
+    this.componentState = 'loading';
 
     // Subscribe to service handling adding items to shopping cart – to detect when the cart needs to be updated
     this.subscriptionAddItem = shoppingCartService.itemAdded$.subscribe(
@@ -119,6 +126,11 @@ export class AppComponent implements OnDestroy {
     // prevent memory leak when component destroyed
     this.subscriptionAddItem.unsubscribe();
     this.subscriptionRemoveItem.unsubscribe();
+  }
+
+  // Event fired when this component is ready
+  ngOnInit() {
+    this.componentState = 'ready';
   }
 
 }

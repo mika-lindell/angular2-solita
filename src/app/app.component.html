@@ -1,5 +1,6 @@
 <div
-  [@fadeIn]="any"
+  *ngIf="componentState === 'ready'"
+  [@fadeIn]="componentState" 
   class="app-container">
 
   <header 
